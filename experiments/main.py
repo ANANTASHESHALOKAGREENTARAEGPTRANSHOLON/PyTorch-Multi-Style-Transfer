@@ -139,6 +139,9 @@ def train(args):
         style_model.cuda()
         vgg.cuda()
 
+    if args.style_model_output_full_path_file_name:
+        style_model_output_full_path_file_name = args.style_model_output_full_path_file_name
+
     style_loader = utils.StyleLoader(args.style_folder, args.style_size)
 
     tbar = trange(args.epochs)
@@ -214,9 +217,10 @@ def train(args):
     # save model
     style_model.eval()
     style_model.cpu()
-    save_model_filename = "Final_epoch_" + str(args.epochs) + "_" + \
-        str(time.ctime()).replace(' ', '_') + "_" + str(
-        args.content_weight) + "_" + str(args.style_weight) + ".model"
+    save_model_filename = style_model_output_full_path_file_name if style_model_output_full_path_file_name else \
+		    "Final_epoch_" + str(args.epochs) + "_" + \
+          str(time.ctime()).replace(' ', '_') + "_" + str(
+          args.content_weight) + "_" + str(args.style_weight) + ".model"
     save_model_path = os.path.join(args.save_model_dir, save_model_filename)
     torch.save(style_model.state_dict(), save_model_path)
 
