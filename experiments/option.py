@@ -23,8 +23,10 @@ class Options():
         train_arg.add_argument("--vgg-model-dir", type=str, default="models/",
                                 help="directory for vgg, if model is not present in the directory it is downloaded")
         train_arg.add_argument("--save-model-dir", type=str, default="models/",
-                                help="path to folder where trained model will be saved.")
-        train_arg.add_argument("--image-size", type=int, default=256,
+                                help="path to folder where the trained model will be saved.")
+        train_arg.add_argument("--style-model-output-full-path-file-name", type=str, default="models/style.model",
+                                help="full path file name where the trained model will be saved.")
+				train_arg.add_argument("--image-size", type=int, default=256,
                                 help="size of training images, default is 256 X 256")
         train_arg.add_argument("--style-size", type=int, default=512,
                                 help="size of style-image, default is the original size of style image")
