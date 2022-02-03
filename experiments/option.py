@@ -26,7 +26,7 @@ class Options():
                                 help="path to folder where the trained model will be saved.")
         train_arg.add_argument("--style-model-output-full-path-file-name", type=str, default="models/style.model",
                                 help="full path file name where the trained model will be saved.")
-				train_arg.add_argument("--image-size", type=int, default=256,
+        train_arg.add_argument("--image-size", type=int, default=256,
                                 help="size of training images, default is 256 X 256")
         train_arg.add_argument("--style-size", type=int, default=512,
                                 help="size of style-image, default is the original size of style image")
